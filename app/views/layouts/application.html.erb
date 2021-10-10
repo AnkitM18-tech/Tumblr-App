@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tumblr</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Tumblr</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+
+<body>
+  <div id="sidebar">
+    <ul>
+      <li class="category"><%= link_to "Tumblr", root_path %></li>
+      <li><%= link_to "Posts", root_path %></li>
+      <li>About</li>
+    </ul>
+    <p class="sign_in">User Login</p>
+  </div>
+
+  <div id="main_content">
+    <div id="header">
+      <p>Post Feed</p>
+      <div class="buttons">
+        <button class="button">
+          <%= link_to "Create Post", new_post_path %>
+        </button>
+        <button class="button">
+          Log Out
+        </button>
+      </div>
+    </div>
+
+    <% flash.each do |name,msg| %>
+      <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+
     <%= yield %>
-  </body>
+  </div>
+</body>
+
 </html>
