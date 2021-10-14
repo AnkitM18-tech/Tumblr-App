@@ -5,8 +5,10 @@
 
 	<p class="date">
 		Submitted <%= time_ago_in_words(@post.created_at) %> ago 
-        <%= link_to 'Edit', edit_post_path(@post) %> |
-        <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>	
+		<% if user_signed_in? %>
+			| <%= link_to 'Edit', edit_post_path(@post) %> |
+			<%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
 	</p>
 
 	<p class="body">
@@ -16,7 +18,9 @@
 	<div id="comments">
 		<h2><%= @post.comments.count %> Comments</h2>
 		<%= render @post.comments %>
-		<h3> Join Discussion: </h3>
+		<% if user_signed_in? %>
+			<h3> Join Discussion: </h3>
+		<% end %>
 		<%= render "comments/form" %>
 	</div>
 </div>
