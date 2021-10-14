@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     resources :comments
   end
   root "posts#index"  #posts controller index action
+
+  get "/about", to: "pages#about"
 end

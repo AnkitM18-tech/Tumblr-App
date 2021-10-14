@@ -7,7 +7,7 @@
             <%= truncate(post.body, length:100) %>
         </p>
         <p class="date">
-            <%= time_ago_in_words(post.created_at) %>
+            <%= time_ago_in_words(post.created_at) %> ago
         </p>
     </div>
 <% end %>
